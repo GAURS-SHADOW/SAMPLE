@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Info Collector</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    <script>
+        function getDeviceInfo() {
+            var deviceInfo = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                screenResolution: window.screen.width + 'x' + window.screen.height,
+                language: navigator.language
+            };
+            // Send the device info to your server
+            fetch('https://yourserver.com/collect', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(deviceInfo)
+            });
+        }
+
+        getDeviceInfo();
+    </script>
+</body>
+</html>
